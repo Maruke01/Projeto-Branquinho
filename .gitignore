@@ -1,0 +1,13 @@
+# Node dependencies and generated output
+**/node_modules/
+**/dist/
+**/.angular/
+npm-debug.log*
+
+# Local secrets and environment configuration
+**/.env
+**/.env.*
+!**/.env.example
+
+# Separate database exercises are not part of the TODO app deployment
+BACKEND/BRANQS/

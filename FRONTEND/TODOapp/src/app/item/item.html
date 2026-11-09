@@ -1,0 +1,23 @@
+<div class="item">
+    <input [id]="tarefa.descricao" type="checkbox" [checked]="tarefa.statusRealizada"
+        (change)="alterarStatus($any($event.target).checked)" />
+    <label [for]="tarefa.descricao">{{tarefa.descricao}}</label>
+    
+    <div *ngIf="!emEdicao" class="btn-wrapper">
+        <button class="btn" (click)="emEdicao = true ">Editar</button>
+        <!-- AQUI: Dispara o evento de remover -->
+        <button class="btn btn-warn" (click)="remover.emit()">Remover</button>
+    </div>
+    
+    <div *ngIf="emEdicao">
+        <!-- AQUI: Adicionado o (keyup.enter) para salvar com a tecla Enter -->
+        <input class="sm-text-input" #editedItem placeholder="escreva o novo nome..." 
+               [value]="tarefa.descricao" 
+               (keyup.enter)="salvarEdicao(editedItem.value)">
+        
+        <div class="btn-wrapper">
+            <button class="btn" (click)="emEdicao = false ">Cancelar</button>
+            <button class="btn btn-save" (click)="salvarEdicao(editedItem.value)">Salvar</button>
+        </div>
+    </div>
+</div>
